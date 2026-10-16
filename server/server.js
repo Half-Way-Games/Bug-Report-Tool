@@ -4,6 +4,7 @@ import { createDb } from './services/db.js';
 import { createStorage } from './services/storage.js';
 import { createIngestRouter } from './routes/ingest.js';
 import { createViewerRouter } from './routes/viewer.js';
+import {createAPIRouter} from "./routes/api.js";
 
 const PORT = process.env.PORT || 3000;
 const UPLOAD_DIR = process.env.UPLOAD_DIR || '/data/uploads';
@@ -32,6 +33,7 @@ app.use('/bugs/screenshots', express.static(path.resolve(UPLOAD_DIR)));
 // Route registration
 app.use(createIngestRouter({ storage, N8N_WEBHOOK_URL }));
 app.use(createViewerRouter({ db }));
+app.use(createAPIRouter({db}));
 
 // Start
 app.listen(PORT, () => {
