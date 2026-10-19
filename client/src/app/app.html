@@ -1,13 +1,13 @@
-<div class="app-shell">
-<aside class="sidebar">
+<div class="app-shell" [class.app-shell--sidebar-collapsed]="sidebarCollapsed">
+<aside class="sidebar" id="app-sidebar">
   <a class="brand" routerLink="/">
     <span class="brand--icon">
-      <img ngSrc="/HWG_logo_White.png" alt="Half-Way Games logo" width="38" height="38">
+      <img ngSrc="/HWG_logo.png" alt="Half-Way Games logo" width="38" height="38">
     </span>
 
     <span class="brand--text">
       <span class="brand--name">HALF-WAY GAMES</span>
-      <span class="brand--subtitle">BUG TRACKER</span>
+      <span class="brand--subtitle">DEV DASHBOARD</span>
     </span>
   </a>
 
@@ -28,7 +28,19 @@
   </div>
 
   <div class="sidebar--footer">
-    <span class="sidebar--footer-title">HWG Tools</span>
+    <div class="sidebar--footer-top">
+      <span class="sidebar--footer-title">HWG Tools</span>
+      <button class="icon-button sidebar-toggle" type="button" (click)="toggleSidebar()"
+              [attr.aria-label]="sidebarCollapsed ? 'Expand Sidebar' : 'Collapse Sidebar'"
+              [attr.aria-expanded]="!sidebarCollapsed" aria-controls="app-sidebar">
+          @if (sidebarCollapsed) {
+            <svg lucideArrowRightFromLine/>
+          } @else {
+            <svg lucideArrowLeftFromLine/>
+          }
+      </button>
+    </div>
+
     <span class="sidebar--footer-text">Internal development</span>
   </div>
 </aside>
