@@ -1,1 +1,295 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+  color-scheme: dark;
+
+  /* ----------------------------------------
+     Colors
+     ---------------------------------------- */
+
+  /* --- Brand Colors --- */
+  --color-brand: #ff9935;
+  --color-brand-hover: #ffad59;
+  --color-brand-active: #e88120;
+  --color-brand-subtle: #332417;
+  --color-brand-border: #75451f;
+  --color-brand-contrast: #17181c;
+
+  --color-accent: #60A5FA;
+  --color-accent-hover: #93C5FD;
+  --color-accent-active: #3B82F6;
+  --color-accent-subtle: #172E49;
+  --color-accent-border: #2B5685;
+
+  --color-logo-gray: #808080;
+
+  /* --- Background and Surfaces --- */
+  --color-bg: #17181C;
+  --color-bg-deep: #101114;
+  --color-surface: #202127;
+  --color-surface-raised: #292B32;
+  --color-surface-hover: #30323A;
+  --color-surface-active: #393C45;
+  --color-surface-inset: #141519;
+
+  /* --- Borders and Dividers --- */
+  --color-border: #34363D;
+  --color-border-strong: #484B55;
+  --color-border-subtle: #292B31;
+
+  /* --- Text Colors --- */
+  --color-text: #F3F4F6;
+  --color-text-secondary: #C1C4CC;
+  --color-text-muted: #969AA5;
+  --color-text-disabled: #666A74;
+  --color-text-inverse: #17181C;
+
+  /* --- Semantic / informational colors --- */
+  --color-success: #4ADE80;
+  --color-success-bg: #173D2A;
+  --color-success-border: #286B45;
+  --color-success-text: #86EFAC;
+
+  --color-warning: #FBBF24;
+  --color-warning-bg: #493016;
+  --color-warning-border: #80521E;
+  --color-warning-text: #FCD34D;
+
+  --color-danger: #F87171;
+  --color-danger-bg: #491F25;
+  --color-danger-border: #85313B;
+  --color-danger-text: #FDA4AF;
+
+  --color-info: #60A5FA;
+  --color-info-bg: #172E49;
+  --color-info-border: #2B5685;
+  --color-info-text: #93C5FD;
+
+  /* ----------------------------------------
+   Typography
+   ---------------------------------------- */
+  --font-family-base:
+    Inter, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+
+  --font-family-mono:
+    "Cascadia Code", Consolas, "Courier New", monospace;
+
+  --font-size-xs: 0.75rem;
+  --font-size-sm: 0.875rem;
+  --font-size-base: 1rem;
+  --font-size-lg: 1.125rem;
+  --font-size-xl: 1.25rem;
+  --font-size-2xl: 1.5rem;
+  --font-size-3xl: 1.875rem;
+
+  --line-height-tight: 1.25;
+  --line-height-base: 1.5;
+  --line-height-relaxed: 1.7;
+
+  --font-weight-normal: 400;
+  --font-weight-medium: 500;
+  --font-weight-semibold: 600;
+  --font-weight-bold: 700;
+
+  /* ----------------------------------------
+     Spacing — multiples of 4px
+     ---------------------------------------- */
+  --space-1: 0.25rem;
+  --space-2: 0.5rem;
+  --space-3: 0.75rem;
+  --space-4: 1rem;
+  --space-5: 1.25rem;
+  --space-6: 1.5rem;
+  --space-8: 2rem;
+  --space-10: 2.5rem;
+  --space-12: 3rem;
+
+  /* ----------------------------------------
+     Corners
+     ---------------------------------------- */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+  --radius-lg: 10px;
+  --radius-xl: 14px;
+  --radius-full: 9999px;
+
+  /* ----------------------------------------
+  Shadows
+  ---------------------------------------- */
+  --shadow-sm: 0 1px 2px rgb(0 0 0 / 20%);
+  --shadow-md: 0 4px 12px rgb(0 0 0 / 25%);
+  --shadow-lg: 0 12px 32px rgb(0 0 0 / 35%);
+
+  /* ----------------------------------------
+     Motion and interaction
+     ---------------------------------------- */
+  --transition-fast: 120ms ease;
+  --transition-base: 180ms ease;
+  --transition-slow: 250ms ease;
+
+  --focus-ring: 0 0 0 3px rgb(255 153 53 / 35%);
+
+  /* ----------------------------------------
+   Layout
+   ---------------------------------------- */
+  --sidebar-width: 248px;
+  --sidebar-width-collapsed: 72px;
+  --header-height: 64px;
+  --content-max-width: 1600px;
+}
+
+/* ========================================
+   Global defaults
+   ======================================== */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-family: var(--font-family-base), sans-serif;
+  font-size: 16px;
+  background: var(--color-bg);
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+  color: var(--color-text);
+  background: var(--color-bg);
+  font-size: var(--font-size-base);
+  line-height: var(--line-height-base);
+  -webkit-font-smoothing: antialiased;
+}
+
+button,
+input,
+textarea,
+select {
+  font: inherit;
+}
+
+button {
+  color: inherit;
+}
+
+a {
+  color: var(--color-accent);
+  text-decoration: none;
+  transition: color var(--transition-fast);
+
+  &:hover {
+    color: var(--color-accent-hover);
+  }
+}
+
+:focus-visible {
+  outline: 2px solid var(--color-brand);
+  outline-offset: 2px;
+  box-shadow: var(--focus-ring);
+}
+
+::selection {
+  color: var(--color-text-inverse);
+  background: var(--color-brand);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  min-height: 38px;
+  padding: var(--space-2) var(--space-4);
+  border: 1px solid transparent;
+  border-radius: var(--radius-md);
+  font-size: var(--font-size-sm);
+  font-weight: var(--font-weight-medium);
+  cursor: pointer;
+  transition:
+    background var(--transition-fast),
+    border-color var(--transition-fast),
+    color var(--transition-fast);
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+}
+
+.btn--primary {
+  color: var(--color-brand-contrast);
+  background: var(--color-brand);
+
+  &:hover:not(:disabled) {
+    background: var(--color-brand-hover);
+  }
+}
+
+.btn--secondary {
+  color: var(--color-text);
+  background: var(--color-surface-raised);
+  border-color: var(--color-border);
+
+  &:hover:not(:disabled) {
+    background: var(--color-surface-hover);
+  }
+}
+
+.btn--outline {
+  color: var(--color-text);
+  background: transparent;
+  border-color: var(--color-border-strong);
+
+  &:hover:not(:disabled) {
+    background: var(--color-surface-hover);
+  }
+}
+
+.btn--danger {
+  color: var(--color-danger-text);
+  background: var(--color-danger-bg);
+  border-color: var(--color-danger-border);
+
+  &:hover:not(:disabled) {
+    background: #5B252D;
+  }
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  padding: 2px var(--space-2);
+  border: 1px solid transparent;
+  border-radius: var(--radius-sm);
+  font-size: var(--font-size-xs);
+  font-weight: var(--font-weight-medium);
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.status-badge--success {
+  color: var(--color-success-text);
+  background: var(--color-success-bg);
+  border-color: var(--color-success-border);
+}
+
+.status-badge--warning {
+  color: var(--color-warning-text);
+  background: var(--color-warning-bg);
+  border-color: var(--color-warning-border);
+}
+
+.status-badge--danger {
+  color: var(--color-danger-text);
+  background: var(--color-danger-bg);
+  border-color: var(--color-danger-border);
+}
+
+.status-badge--info {
+  color: var(--color-info-text);
+  background: var(--color-info-bg);
+  border-color: var(--color-info-border);
+}

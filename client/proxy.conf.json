@@ -1,0 +1,14 @@
+{
+  "/api": {
+    "target": "http://dev.halfwaygames.com/api",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  },
+  "/bugs/screenshots": {
+    "target": "http://dev.halfwaygames.com/bugs/screenshots",
+    "secure": true,
+    "changeOrigin": true,
+    "logLevel": "debug"
+  }
+}

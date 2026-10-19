@@ -1,3 +1,50 @@
-<main class="container">
+<div class="app-shell">
+<aside class="sidebar">
+  <a class="brand" routerLink="/">
+    <span class="brand--icon">
+      <img ngSrc="/HWG_logo_White.png" alt="Half-Way Games logo" width="38" height="38">
+    </span>
 
-</main>
+    <span class="brand--text">
+      <span class="brand--name">HALF-WAY GAMES</span>
+      <span class="brand--subtitle">BUG TRACKER</span>
+    </span>
+  </a>
+
+  <div class="sidebar--section">
+    <span class="sidebar--label">WORKSPACE</span>
+
+    <nav class="sidebar--nav" aria-label="Main navigation">
+      <a class="nav-link" routerLink="/" routerLinkActive="nav-link--active" [routerLinkActiveOptions]="{exact: true}">
+        <span class="nav-link--icon"><svg lucideLayoutDashboard/></span>
+        <span>Dashboard</span>
+      </a>
+
+      <a class="nav-link" routerLink="/bugs" routerLinkActive="nav-link--active">
+        <span class="nav-link--icon"><svg lucideBug/></span>
+        <span>All Bugs</span>
+      </a>
+    </nav>
+  </div>
+
+  <div class="sidebar--footer">
+    <span class="sidebar--footer-title">HWG Tools</span>
+    <span class="sidebar--footer-text">Internal development</span>
+  </div>
+</aside>
+
+  <div class="app-main">
+    <header class="topbar">
+      <div class="topbar--context">
+        <span class="topbar--title">Bug Tracker</span>
+        <span class="topbar--subtitle">Half-Way Games development tools</span>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <div class="page-content--inner">
+        <router-outlet/>
+      </div>
+    </main>
+  </div>
+</div>
