@@ -10,6 +10,7 @@ export interface BugReportListItem {
 export interface BugReportDetail extends BugReportListItem{
   screenshot_path: string;
   hardware_stats: HardwareStats;
+  payload_data: JsonObject;
   raw_payload: JsonObject;
 }
 
