@@ -1,1 +1,27 @@
-<p>bugs-list works!</p>
+<h1>Bug Reports</h1>
+<div class="table-container">
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Received At</th>
+    <th>Build Version</th>
+    <th>Platform</th>
+    <th>Summary</th>
+    <th>Reporter Note</th>
+  </tr>
+  </thead>
+  <tbody>
+    @for (bug of bugs(); track bug.id) {
+      <tr>
+        <td><a routerLink='{{bug.id}}'>{{bug.id}}</a></td>
+        <td>{{bug.received_at | date : 'medium'}}</td>
+        <td>{{bug.build_version}}</td>
+        <td>{{bug.platform}}</td>
+        <td>{{bug.summary.slice(0, 150)}}</td>
+        <td>{{bug.reporter_note.slice(0, 150)}}</td>
+      </tr>
+    }
+  </tbody>
+</table>
+</div>

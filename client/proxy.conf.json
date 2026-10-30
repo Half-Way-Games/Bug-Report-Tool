@@ -1,12 +1,12 @@
 {
   "/api": {
-    "target": "http://dev.halfwaygames.com/api",
+    "target": "http://192.168.1.9:8081",
     "secure": true,
     "changeOrigin": true,
     "logLevel": "debug"
   },
   "/bugs/screenshots": {
-    "target": "http://dev.halfwaygames.com/bugs/screenshots",
+    "target": "http://192.168.1.9:8081",
     "secure": true,
     "changeOrigin": true,
     "logLevel": "debug"

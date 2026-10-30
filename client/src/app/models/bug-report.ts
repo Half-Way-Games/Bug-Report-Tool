@@ -10,7 +10,7 @@ export interface BugReportListItem {
 export interface BugReportDetail extends BugReportListItem{
   screenshot_path: string;
   hardware_stats: HardwareStats;
-
+  raw_payload: JsonObject;
 }
 
 export interface HardwareStats {
@@ -25,3 +25,7 @@ export interface HardwareStats {
     refresh?: number;
   };
 }
+
+export type JsonValue = string | number | boolean | null | JsonValue[] | { [key: string]: JsonValue };
+
+export type JsonObject = Record<string, JsonValue>;

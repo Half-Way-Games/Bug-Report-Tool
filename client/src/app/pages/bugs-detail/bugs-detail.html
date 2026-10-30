@@ -1,1 +1,73 @@
-<p>bugs-detail works!</p>
+<!-- Metadata -->
+<div class="grid">
+  <section>
+    <h2>Report Details</h2>
+
+    <p>
+      <strong>Received:</strong>
+      {{ bug.received_at }}
+    </p>
+
+    <p>
+      <strong>Build:</strong> {{ bug.build_version }}
+    </p>
+
+    <p>
+      <strong>Platform:</strong> {{ bug.platform || '(unknown)' }}
+    </p>
+
+<!--    <p>-->
+<!--      <strong>Status:</strong> {{ bug.s }}-->
+<!--    </p>-->
+
+<!--    <p>-->
+<!--      <strong>Severity:</strong> {{ bug.severity ?? 'Unassigned' }}-->
+<!--    </p>-->
+  </section>
+
+  @if (bug.hardware_stats) {
+    <app-collapsible-card
+      title="Hardware"
+      [defaultOpen]="true"
+    >
+      <app-json-value-component [value]="bug.hardware_stats" />
+    </app-collapsible-card>
+  }
+</div>
+
+<hr />
+
+<!-- Summary -->
+<section>
+<!--  <h2>{{ bug.title }}</h2>-->
+
+  <p>{{ bug.summary }}</p>
+
+  @if (bug.reporter_note) {
+    <blockquote>
+      <strong>Reporter Note:</strong>
+      <p>{{ bug.reporter_note }}</p>
+    </blockquote>
+  }
+</section>
+
+<!-- Diagnostic sections -->
+<section>
+  <h2>Diagnostics</h2>
+
+  <div class="diagnostics-grid">
+    @for (section of diagnosticEntries; track section[0]) {
+      <app-collapsible-card [title]="section[0]">
+        <app-json-value-component [value]="section[1]" />
+      </app-collapsible-card>
+    }
+  </div>
+</section>
+
+<!-- Raw payload -->
+<app-collapsible-card
+  title="Raw JSON Payload"
+  summary="View original payload"
+>
+  <pre>{{ rawPayloadJson }}</pre>
+</app-collapsible-card>

@@ -1,55 +1,12 @@
-<div class="app-shell" [class.app-shell--sidebar-collapsed]="sidebarCollapsed">
-<aside class="sidebar" id="app-sidebar">
-  <a class="brand" routerLink="/">
-    <span class="brand--icon">
-      <img ngSrc="/HWG_logo.png" alt="Half-Way Games logo" width="38" height="38">
-    </span>
-
-    <span class="brand--text">
-      <span class="brand--name">HALF-WAY GAMES</span>
-      <span class="brand--subtitle">DEV DASHBOARD</span>
-    </span>
-  </a>
-
-  <div class="sidebar--section">
-    <span class="sidebar--label">WORKSPACE</span>
-
-    <nav class="sidebar--nav" aria-label="Main navigation">
-      <a class="nav-link" routerLink="/" routerLinkActive="nav-link--active" [routerLinkActiveOptions]="{exact: true}">
-        <span class="nav-link--icon"><svg lucideLayoutDashboard/></span>
-        <span>Dashboard</span>
-      </a>
-
-      <a class="nav-link" routerLink="/bugs" routerLinkActive="nav-link--active">
-        <span class="nav-link--icon"><svg lucideBug/></span>
-        <span>All Bugs</span>
-      </a>
-    </nav>
-  </div>
-
-  <div class="sidebar--footer">
-    <div class="sidebar--footer-top">
-      <span class="sidebar--footer-title">HWG Tools</span>
-      <button class="icon-button sidebar-toggle" type="button" (click)="toggleSidebar()"
-              [attr.aria-label]="sidebarCollapsed ? 'Expand Sidebar' : 'Collapse Sidebar'"
-              [attr.aria-expanded]="!sidebarCollapsed" aria-controls="app-sidebar">
-          @if (sidebarCollapsed) {
-            <svg lucideArrowRightFromLine/>
-          } @else {
-            <svg lucideArrowLeftFromLine/>
-          }
-      </button>
-    </div>
-
-    <span class="sidebar--footer-text">Internal development</span>
-  </div>
-</aside>
+<div class="app-shell">
 
   <div class="app-main">
     <header class="topbar">
-      <div class="topbar--context">
-        <span class="topbar--title">Bug Tracker</span>
-        <span class="topbar--subtitle">Half-Way Games development tools</span>
+      <div class="topbar--container">
+        <div class="topbar--content">
+          <span class="topbar--title">Bug Tracker</span>
+          <span class="topbar--subtitle">Browse and review bug reports</span>
+        </div>
       </div>
     </header>
 

@@ -1,0 +1,16 @@
+.collapsible-card {
+  min-width: 0;
+}
+
+.collapsible-card--header {
+  margin-bottom: var(--space-2);
+}
+
+.collapsible-card summary {
+  cursor: pointer;
+}
+
+.collapsible-card--content {
+  padding: var(--space-3);
+  overflow-wrap: anywhere;
+}

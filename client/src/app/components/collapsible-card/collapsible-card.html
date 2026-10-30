@@ -1,0 +1,13 @@
+
+<article class="collapsible-card">
+  <header class="collapsible-card--header">
+    <strong>{{title}}</strong>
+  </header>
+
+  <details [open]="defaultOpen">
+    <summary>{{summary}}</summary>
+    <div class="collapsible-card--content">
+      <ng-content/>
+    </div>
+  </details>
+</article>

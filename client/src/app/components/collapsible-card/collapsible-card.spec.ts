@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
-import { TableFilter } from './table-filter';
+import { CollapsibleCard } from './collapsible-card';
 
-describe('TableFilter', () => {
-  let component: TableFilter;
-  let fixture: ComponentFixture<TableFilter>;
+describe('CollapsibleCard', () => {
+  let component: CollapsibleCard;
+  let fixture: ComponentFixture<CollapsibleCard>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [TableFilter],
+      imports: [CollapsibleCard],
     }).compileComponents();
 
-    fixture = TestBed.createComponent(TableFilter);
+    fixture = TestBed.createComponent(CollapsibleCard);
     component = fixture.componentInstance;
     await fixture.whenStable();
   });

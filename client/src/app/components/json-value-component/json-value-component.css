@@ -1,0 +1,11 @@
+.json-object,
+.json-array {
+  padding-left: 1.5rem;
+  margin: 0.35rem 0;
+}
+
+.json-object li,
+.json-array li {
+  margin-block: 0.25rem;
+  overflow-wrap: anywhere;
+}
