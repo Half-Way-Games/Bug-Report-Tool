@@ -7,10 +7,10 @@
   @if (bug.screenshot_path){
     <section>
       <h2>Screenshot</h2>
-      <img class="screenshot-preview" src="/bugs/screenshots/{{bug.screenshot_path}}" alt="Bug report screenshot" width="150" (click)="screenshotOpen = true"/>
+      <img class="screenshot-preview" src="/api/screenshots/{{bug.screenshot_path}}" alt="Bug report screenshot" (click)="screenshotOpen = true"/>
       @if (screenshotOpen) {
         <div class="lightbox" role="dialog" aria-modal="true" aria-label="screenshot view" (click)="screenshotOpen = false">
-          <img class="lightbox-image" src="/bugs/screenshots/{{bug.screenshot_path}}" alt="Bug report screenshot full size">
+          <img class="lightbox-image" src="/api/screenshots/{{bug.screenshot_path}}" alt="Bug report screenshot full size">
         </div>
       }
     </section>
@@ -74,7 +74,9 @@
     <details>
       <summary><strong>Raw JSON Payload</strong></summary>
       <markdown lineNumbers>
-        <pre>{{rawPayloadJson}}</pre>
+        ```json
+        {{rawPayloadJson}}
+        ```
       </markdown>
     </details>
   </section>
