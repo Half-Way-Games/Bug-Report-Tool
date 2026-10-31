@@ -1,17 +1,17 @@
 export interface BugReportListItem {
   id: number;
-  received_at: string;
-  build_version: string;
+  receivedAt: string;
+  buildVersion: string;
   platform: string;
   summary: string;
-  reporter_note: string;
+  reporterNote: string;
 }
 
 export interface BugReportDetail extends BugReportListItem{
-  screenshot_path: string;
-  hardware_stats: HardwareStats;
-  payload_data: JsonObject;
-  raw_payload: JsonObject;
+  screenshotPath: string;
+  hardwareStats: HardwareStats;
+  payloadData: JsonObject;
+  rawPayload: JsonObject;
 }
 
 export interface HardwareStats {
