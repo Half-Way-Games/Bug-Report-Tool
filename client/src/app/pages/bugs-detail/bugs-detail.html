@@ -7,9 +7,17 @@
   @if (bug.screenshot_path){
     <section>
       <h2>Screenshot</h2>
-      <img class="screenshot-preview" src="/api/screenshots/{{bug.screenshot_path}}" alt="Bug report screenshot" (click)="screenshotOpen = true"/>
+      <button type="button" class="screenshot-button" aria-label="Open screenshot full size" (click)="screenshotOpen = true">
+        <img class="screenshot-preview" src="/api/screenshots/{{bug.screenshot_path}}" alt="Bug report screenshot" (click)="screenshotOpen = true"/>
+      </button>
       @if (screenshotOpen) {
         <div class="lightbox" role="dialog" aria-modal="true" aria-label="screenshot view" (click)="screenshotOpen = false">
+          <button
+            type="button"
+            class="lightbox-close"
+            aria-label="Close screenshot preview"
+            (click)="screenshotOpen = false"
+          > × </button>
           <img class="lightbox-image" src="/api/screenshots/{{bug.screenshot_path}}" alt="Bug report screenshot full size">
         </div>
       }
