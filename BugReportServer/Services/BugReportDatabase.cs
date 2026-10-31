@@ -44,7 +44,7 @@ public class BugReportDatabase(IConfiguration config)
         
         return bugs;
     }
-    public async Task<BugReportDetail> GetReportByIdAsync(string id)
+    public async Task<BugReportDetail?> GetReportByIdAsync(string id)
     { 
         await using var connection = new MySqlConnection(connectionString);
         await connection.OpenAsync();
@@ -63,7 +63,7 @@ public class BugReportDatabase(IConfiguration config)
         
         await reader.ReadAsync();
 
-        return new BugReportDetail
+        return reader.HasRows ? new BugReportDetail
         {
             Id = reader.GetInt16("id"),
             ReceivedAt = reader.GetDateTime("received_at"),
@@ -83,6 +83,6 @@ public class BugReportDatabase(IConfiguration config)
                 : JsonSerializer.Deserialize<JsonElement>(reader.GetString("hardware_stats")),
             PayloadData = JsonSerializer.Deserialize<JsonElement>(reader.GetString("payload_data")),
             RawPayload = JsonSerializer.Deserialize<JsonElement>(reader.GetString("raw_payload"))
-        };
+        } : null;
     }
 }

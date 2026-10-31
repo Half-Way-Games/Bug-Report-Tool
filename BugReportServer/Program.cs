@@ -18,7 +18,7 @@ app.MapGet("/api/bugs/{id}", async (string id, BugReportDatabase db) =>
 {
     var bug = await db.GetReportByIdAsync(id);
     
-    return Results.Ok(new {bug});
+    return bug != null ? Results.Ok(new {bug}) : Results.NotFound();
 });
 
 
