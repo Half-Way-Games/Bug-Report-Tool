@@ -17,6 +17,7 @@ public class BugReportDatabase(IConfiguration config)
         command.CommandText = """
                               SELECT id, received_at, build_version, platform, summary, reporter_note
                               FROM bug_reports
+                              ORDER BY id DESC
                               LIMIT @limit OFFSET @offset
                               """;
         command.Parameters.AddWithValue("@limit", limit);

@@ -88,7 +88,7 @@ app.MapPost("/bug-report", async (HttpRequest request, ScreenshotStorage Screens
         data = payload["data"]
     };
     
-    var n8nWebhookUrl = config.GetConnectionString("n8n_webhook_url");
+    var n8nWebhookUrl = config.GetConnectionString("N8NUrl");
 
     if (!string.IsNullOrWhiteSpace(n8nWebhookUrl))
     {
