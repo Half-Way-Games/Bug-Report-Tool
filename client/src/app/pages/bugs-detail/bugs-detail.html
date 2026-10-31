@@ -1,0 +1,93 @@
+@if (loading()) {
+  <p>Loading bug report...</p>
+} @else if (error()) {
+  <p>{{ error() }}</p>
+} @else if (bug(); as bug) {
+  <h1>Report ID #{{bug.id}}</h1>
+  @if (bug.screenshot_path){
+    <section>
+      <h2>Screenshot</h2>
+      <button type="button" class="screenshot-button" aria-label="Open screenshot full size" (click)="screenshotOpen = true">
+        <img class="screenshot-preview" src="/api/screenshots/{{bug.screenshot_path}}" alt="Bug report screenshot" (click)="screenshotOpen = true"/>
+      </button>
+      @if (screenshotOpen) {
+        <div class="lightbox" role="dialog" aria-modal="true" aria-label="screenshot view" (click)="screenshotOpen = false">
+          <button
+            type="button"
+            class="lightbox-close"
+            aria-label="Close screenshot preview"
+            (click)="screenshotOpen = false"
+          > × </button>
+          <img class="lightbox-image" src="/api/screenshots/{{bug.screenshot_path}}" alt="Bug report screenshot full size">
+        </div>
+      }
+    </section>
+  }
+  <hr/>
+
+  <div class="grid">
+    <section>
+      <h2>Meta</h2>
+      <p><strong>Received:</strong> {{ bug.received_at | date : 'long'}}></p>
+      <p><strong>Build:</strong> {{bug.build_version}}</p>
+      <p><strong>Platform:</strong> {{bug.platform ?? "(unknown)"}}</p>
+    </section>
+
+    @if (bug.hardware_stats) {
+      <section>
+        <h2>Hardware</h2>
+        <p><strong>CPU:</strong> {{bug.hardware_stats.cpu}}</p>
+        <p><strong>GPU:</strong> {{bug.hardware_stats.gpu}}</p>
+        @if (bug.hardware_stats.ram; as ram) {
+          <p><strong>RAM:</strong>
+            {{ram.free.toFixed(2)}} GB free of {{ram.total.toFixed(2)}} GB
+          </p>
+        }
+        @if (bug.hardware_stats.display; as display){
+          <p><strong>Display:</strong>
+            {{display.size ?? "(unknown)"}} @ {{display.refresh?.toFixed(2) ?? "(unkown)"}}Hz
+          </p>
+        }
+      </section>
+    }
+  </div>
+  <hr />
+
+  <section>
+    <h2>Summary</h2>
+    <markdown>{{ bug.summary }}</markdown>
+
+    @if (bug.reporter_note) {
+      <blockquote>
+        <strong>Reporter Note:</strong>
+        <p>{{ bug.reporter_note }}</p>
+      </blockquote>
+    }
+  </section>
+
+  <!-- Diagnostic sections -->
+  <section>
+    <h2>Diagnostics</h2>
+
+    <div class="diagnostics-grid">
+      @for (section of diagnosticEntries; track section[0]) {
+        <app-collapsible-card [title]="section[0]">
+          <app-json-value-component [value]="section[1]" />
+        </app-collapsible-card>
+      }
+    </div>
+    <hr/>
+  </section>
+  <section>
+    <details>
+      <summary><strong>Raw JSON Payload</strong></summary>
+      <markdown lineNumbers>
+        ```json
+        {{rawPayloadJson}}
+        ```
+      </markdown>
+    </details>
+  </section>
+} @else {
+  <p>No bug report found for ID:{{id}}</p>
+}

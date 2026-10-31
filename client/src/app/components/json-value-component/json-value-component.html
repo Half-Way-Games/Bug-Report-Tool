@@ -1,0 +1,20 @@
+@if (isObject(value)) {
+  <ul class="json-object">
+    @for (entry of entries(value); track entry[0]) {
+      <li>
+        <strong>{{entry[0]}}:</strong>
+        <app-json-value-component [value]="entry[1]" />
+      </li>
+    }
+  </ul>
+} @else if (isArray(value)) {
+  <ol class="json-array">
+    @for (item of value; track $index) {
+      <li>
+        <app-json-value-component [value]="item" />
+      </li>
+    }
+  </ol>
+} @else {
+  <span>{{formatPrimitive(value)}}</span>
+}

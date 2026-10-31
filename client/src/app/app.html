@@ -1,0 +1,22 @@
+<div class="app-shell">
+
+  <div class="app-main">
+    <header class="topbar">
+      <div class="topbar--container">
+        <div class="topbar--content">
+          <span class="topbar--title">Bug Tracker</span>
+          <span class="topbar--subtitle">Browse and review bug reports</span>
+        </div>
+        <div class="bugs-list">
+          <a class="btn btn--primary" routerLink="/" routerLinkActive="hide" [routerLinkActiveOptions]="{exact: true}">View All Bugs</a>
+        </div>
+      </div>
+    </header>
+
+    <main class="page-content">
+      <div class="page-content--inner">
+        <router-outlet/>
+      </div>
+    </main>
+  </div>
+</div>
