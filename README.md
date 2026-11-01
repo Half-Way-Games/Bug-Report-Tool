@@ -15,10 +15,11 @@ flowchart TD
 
     subgraph Backend ["Backend & Processing"]
         B(ASP.NET Backend)
-        C(N8N Workflow)
+        
     end
 
     subgraph Storage_AI ["Other Containers"]
+        C(N8N Workflow)
         Ollama[Ollama AI]
         Discord[Discord Notifications]
         MariaDB[(MariaDB Database)]
