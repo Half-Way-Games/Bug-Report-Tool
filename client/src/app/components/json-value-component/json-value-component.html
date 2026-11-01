@@ -2,7 +2,7 @@
   <ul class="json-object">
     @for (entry of entries(value); track entry[0]) {
       <li>
-        <strong>{{entry[0]}}:</strong> <app-json-value-component [value]="entry[1]" />
+        <strong>{{entry[0]}}: </strong> <app-json-value-component [value]="entry[1]" />
       </li>
     }
   </ul>
