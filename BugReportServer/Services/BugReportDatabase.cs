@@ -30,7 +30,7 @@ public class BugReportDatabase(IConfiguration config)
         while (await reader.ReadAsync())
         {
             bugs.Add(new BugReportListItem{
-                Id = reader.GetInt16("id"),
+                Id = reader.GetInt32("id"),
                 ReceivedAt = reader.GetDateTime("received_at"),
                 BuildVersion = reader.GetString("build_version"),
                 Platform = reader.GetString("platform"),

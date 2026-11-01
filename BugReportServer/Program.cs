@@ -9,8 +9,9 @@ builder.Services.AddCors();
 
 var app = builder.Build();
 
-var uploadDir = builder.Configuration["UploadDir"] ?? "/data/uploads";
-var uploadPath = Path.GetFullPath(uploadDir);
+var uploadDir = builder.Configuration["UploadDir"];
+var uploadPath = Path.GetFullPath(string.IsNullOrWhiteSpace(uploadDir) ? "/data/uploads" : uploadDir);
+Directory.CreateDirectory(uploadPath);
 
 app.UseStaticFiles(new StaticFileOptions
 {

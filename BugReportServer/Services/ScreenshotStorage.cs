@@ -6,8 +6,8 @@ public class ScreenshotStorage
 
     public ScreenshotStorage(IConfiguration config)
     {
-        uploadPath = config["UploadPath"] ?? "/data/uploads";
-        Directory.CreateDirectory(uploadPath);
+        var configPath = config["UploadDir"];
+        uploadPath = string.IsNullOrWhiteSpace(configPath) ? "/data/uploads" : configPath;
     }
 
     public async Task<string> SaveScreenshotAsync(string id, IFormFile screenshot)
