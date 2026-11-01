@@ -48,11 +48,11 @@ export class BugsDetail implements OnInit{
 
   get diagnosticEntries(): [string, JsonValue][] {
     const bug = this.bug();
-    return bug ? Object.entries(bug.payload_data) : [];
+    return bug ? Object.entries(bug.payloadData) : [];
   }
 
   get rawPayloadJson(): string {
     const bug = this.bug();
-    return bug ? JSON.stringify(bug.raw_payload, null, 2) : '';
+    return bug ? JSON.stringify(bug.rawPayload, null, 2) : '';
   }
 }

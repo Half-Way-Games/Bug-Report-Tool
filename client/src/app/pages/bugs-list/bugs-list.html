@@ -16,11 +16,11 @@
         @for (bug of bugs(); track bug.id) {
           <tr>
             <td><a routerLink='{{bug.id}}'>{{bug.id}}</a></td>
-            <td>{{bug.received_at | date : 'medium'}}</td>
-            <td>{{bug.build_version}}</td>
+            <td>{{bug.receivedAt | date : 'medium'}}</td>
+            <td>{{bug.buildVersion}}</td>
             <td>{{bug.platform}}</td>
             <td>{{bug.summary.slice(0, 150)}}</td>
-            <td>{{bug.reporter_note.slice(0, 150)}}</td>
+            <td>{{bug.reporterNote.slice(0, 150)}}</td>
           </tr>
         }
       </tbody>

@@ -4,11 +4,11 @@
   <p>{{ error() }}</p>
 } @else if (bug(); as bug) {
   <h1>Report ID #{{bug.id}}</h1>
-  @if (bug.screenshot_path){
+  @if (bug.screenshotPath){
     <section>
       <h2>Screenshot</h2>
       <button type="button" class="screenshot-button" aria-label="Open screenshot full size" (click)="screenshotOpen = true">
-        <img class="screenshot-preview" src="/api/screenshots/{{bug.screenshot_path}}" alt="Bug report screenshot" (click)="screenshotOpen = true"/>
+        <img class="screenshot-preview" src="/api/screenshots/{{bug.screenshotPath}}" alt="Bug report screenshot" (click)="screenshotOpen = true"/>
       </button>
       @if (screenshotOpen) {
         <div class="lightbox" role="dialog" aria-modal="true" aria-label="screenshot view" (click)="screenshotOpen = false">
@@ -18,7 +18,7 @@
             aria-label="Close screenshot preview"
             (click)="screenshotOpen = false"
           > × </button>
-          <img class="lightbox-image" src="/api/screenshots/{{bug.screenshot_path}}" alt="Bug report screenshot full size">
+          <img class="lightbox-image" src="/api/screenshots/{{bug.screenshotPath}}" alt="Bug report screenshot full size">
         </div>
       }
     </section>
@@ -28,22 +28,22 @@
   <div class="grid">
     <section>
       <h2>Meta</h2>
-      <p><strong>Received:</strong> {{ bug.received_at | date : 'long'}}></p>
-      <p><strong>Build:</strong> {{bug.build_version}}</p>
+      <p><strong>Received:</strong> {{ bug.receivedAt | date : 'long'}}></p>
+      <p><strong>Build:</strong> {{bug.buildVersion}}</p>
       <p><strong>Platform:</strong> {{bug.platform ?? "(unknown)"}}</p>
     </section>
 
-    @if (bug.hardware_stats) {
+    @if (bug.hardwareStats) {
       <section>
         <h2>Hardware</h2>
-        <p><strong>CPU:</strong> {{bug.hardware_stats.cpu}}</p>
-        <p><strong>GPU:</strong> {{bug.hardware_stats.gpu}}</p>
-        @if (bug.hardware_stats.ram; as ram) {
+        <p><strong>CPU:</strong> {{bug.hardwareStats.cpu}}</p>
+        <p><strong>GPU:</strong> {{bug.hardwareStats.gpu}}</p>
+        @if (bug.hardwareStats.ram; as ram) {
           <p><strong>RAM:</strong>
             {{ram.free.toFixed(2)}} GB free of {{ram.total.toFixed(2)}} GB
           </p>
         }
-        @if (bug.hardware_stats.display; as display){
+        @if (bug.hardwareStats.display; as display){
           <p><strong>Display:</strong>
             {{display.size ?? "(unknown)"}} @ {{display.refresh?.toFixed(2) ?? "(unkown)"}}Hz
           </p>
@@ -57,10 +57,10 @@
     <h2>Summary</h2>
     <markdown>{{ bug.summary }}</markdown>
 
-    @if (bug.reporter_note) {
+    @if (bug.reporterNote) {
       <blockquote>
         <strong>Reporter Note:</strong>
-        <p>{{ bug.reporter_note }}</p>
+        <p>{{ bug.reporterNote }}</p>
       </blockquote>
     }
   </section>
